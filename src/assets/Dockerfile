@@ -6,6 +6,8 @@ WORKDIR /usr/src/app
 ARG NODE_ENV
 ENV NODE_ENV $NODE_ENV
 
+RUN echo $(ls)
+
 # Install Node.js
 RUN apt-get update && apt-get upgrade && apt-get dist-upgrade
 RUN apt-get install --yes curl
