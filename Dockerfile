@@ -10,7 +10,7 @@ ENV NODE_ENV $NODE_ENV
 COPY . /usr/src/app/
 # Update node Packages
 RUN \
-    npm install -g npm &&\
+    apt-get install -y nodejs &&
     npm install -g @angular/cli && \
     npm install && \
     ng build --prod
