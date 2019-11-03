@@ -1,5 +1,5 @@
 # This file is a template, and might need editing before it works on your project.
-FROM bitnami/nginx:latest
+FROM node:latest
 
 WORKDIR /usr/src/app
 
@@ -10,7 +10,7 @@ ENV NODE_ENV $NODE_ENV
 COPY . /usr/src/app/
 # Update node Packages
 RUN \
-    apt-get install -y nodejs && \
+    apt-get install -y nginx && \
     npm install -g @angular/cli && \
     npm install && \
     ng build --prod
