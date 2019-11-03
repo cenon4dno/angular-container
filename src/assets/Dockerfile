@@ -19,10 +19,9 @@ RUN apt-get install -y nginx
 COPY . /usr/src/app/
 
 # Update node Packages
-RUN \    
-    npm install -g @angular/cli && \
-    npm install && \
-    ng build --prod
+RUN npm install -g @angular/cli
+RUN npm install
+RUN ng build --prod
 
 # Replace default nginx config
 COPY assets/conf/nginx.conf /etc/nginx/nginx.conf
