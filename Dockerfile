@@ -16,9 +16,9 @@ RUN \
     ng build --prod
 
 # Replace default nginx config
-COPY conf/nginx.conf /etc/nginx/nginx.conf
+COPY assets/conf/nginx.conf /etc/nginx/nginx.conf
 # Copy app nginx conf
-COPY conf/myconf.conf /usr/src/myconf.conf
+COPY assets/conf/myconf.conf /usr/src/myconf.conf
 
 # Replace this with your application's default port
 EXPOSE 8080
