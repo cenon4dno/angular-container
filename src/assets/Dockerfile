@@ -1,14 +1,13 @@
 # This file is a template, and might need editing before it works on your project.
 FROM ubuntu:18.04
 
+# Configure system variables
 WORKDIR /usr/src/app
-
 ARG NODE_ENV
 ENV NODE_ENV $NODE_ENV
-
 RUN echo $(ls)
 
-# Install Node.js
+# Install needed packages
 RUN apt-get update && apt-get upgrade && apt-get dist-upgrade
 RUN apt-get install --yes curl
 RUN curl --silent --location https://deb.nodesource.com/setup_10.x
@@ -20,7 +19,7 @@ RUN apt-get install -y nginx
 # Copy package.json for initial package installation
 COPY . /usr/src/app/
 
-# Update node Packages
+# Instalt/Update node Packages
 RUN npm install -g @angular/cli
 RUN npm install
 
