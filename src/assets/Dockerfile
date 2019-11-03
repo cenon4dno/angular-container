@@ -9,7 +9,7 @@ ENV NODE_ENV $NODE_ENV
 # Install Node.js
 RUN apt-get update && apt-get upgrade && apt-get dist-upgrade
 RUN apt-get install --yes curl
-RUN curl --silent --location https://deb.nodesource.com/setup_4.x
+RUN curl --silent --location https://deb.nodesource.com/setup_10.x
 RUN apt-get install --yes nodejs
 RUN apt-get install --yes build-essential
 RUN apt-get install -y nginx
