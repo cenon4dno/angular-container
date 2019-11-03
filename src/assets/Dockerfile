@@ -1,5 +1,5 @@
 # This file is a template, and might need editing before it works on your project.
-FROM ubuntu:latest
+FROM ubuntu:18.04
 
 WORKDIR /usr/src/app
 
@@ -7,6 +7,7 @@ ARG NODE_ENV
 ENV NODE_ENV $NODE_ENV
 
 # Install Node.js
+RUN apt-get update && apt-get upgrade && apt-get dist-upgrade
 RUN apt-get install --yes curl
 RUN curl --silent --location https://deb.nodesource.com/setup_4.x | sudo bash -
 RUN apt-get install --yes nodejs
