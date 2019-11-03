@@ -1,16 +1,23 @@
 # This file is a template, and might need editing before it works on your project.
-FROM node:latest
+FROM ubuntu:latest
 
 WORKDIR /usr/src/app
 
 ARG NODE_ENV
 ENV NODE_ENV $NODE_ENV
 
+# Install Node.js
+RUN apt-get install --yes curl
+RUN curl --silent --location https://deb.nodesource.com/setup_4.x | sudo bash -
+RUN apt-get install --yes nodejs
+RUN apt-get install --yes build-essential
+RUN apt-get install -y nginx
+
 # Copy package.json for initial package installation
 COPY . /usr/src/app/
+
 # Update node Packages
-RUN \
-    apt-get install -y nginx && \
+RUN \    
     npm install -g @angular/cli && \
     npm install && \
     ng build --prod
