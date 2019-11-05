@@ -3,25 +3,14 @@ FROM ubuntu:18.04
 
 # Configure system variables
 WORKDIR /usr/src/app
-ARG NODE_ENV
-ENV NODE_ENV $NODE_ENV
-RUN echo $(ls)
 
 # Install needed packages
 RUN apt-get update && apt-get upgrade && apt-get dist-upgrade
-RUN apt-get install --yes curl
-RUN curl --silent --location https://deb.nodesource.com/setup_10.x
-RUN apt-get install --yes nodejs
-RUN apt-get install -y npm
-RUN apt-get install --yes build-essential
 RUN apt-get install -y nginx
+RUN service ssh start
 
 # Copy package.json for initial package installation
 COPY . /usr/src/app/
-
-# Instalt/Update node Packages
-RUN npm install -g @angular/cli
-RUN npm install
 
 # Replace default nginx config
 COPY assets/conf/nginx.conf /etc/nginx/nginx.conf
@@ -29,8 +18,9 @@ COPY assets/conf/nginx.conf /etc/nginx/nginx.conf
 COPY assets/conf/myconf.conf /usr/src/myconf.conf
 
 # Replace this with your application's default port
-EXPOSE 8080
+EXPOSE 80
 EXPOSE 443
+EXPOSE 2222
 
 USER 1001
 
