@@ -7,7 +7,6 @@ WORKDIR /usr/src/app
 # Install needed packages
 RUN apt-get update && apt-get upgrade && apt-get dist-upgrade
 RUN apt-get install -y nginx
-RUN service ssh start
 
 # Copy package.json for initial package installation
 COPY . /usr/src/app/
