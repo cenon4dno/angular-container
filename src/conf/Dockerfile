@@ -8,9 +8,9 @@ WORKDIR /usr/src/app
 COPY . /usr/src/app/
 
 # Replace default nginx config
-COPY assets/conf/nginx.conf /etc/nginx/nginx.conf
+COPY nginx.conf /etc/nginx/nginx.conf
 # Copy app nginx conf
-COPY assets/conf/myconf.conf /usr/src/myconf.conf
+COPY myconf.conf /usr/src/myconf.conf
 
 # Replace this with your application's default port
 EXPOSE 80
