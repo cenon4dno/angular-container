@@ -1,12 +1,8 @@
 # This file is a template, and might need editing before it works on your project.
-FROM ubuntu:18.04
+FROM nginx
 
 # Configure system variables
 WORKDIR /usr/src/app
-
-# Install needed packages
-RUN apt-get update && apt-get upgrade && apt-get dist-upgrade
-RUN apt-get install -y nginx
 
 # Copy package.json for initial package installation
 COPY . /usr/src/app/
@@ -20,8 +16,6 @@ COPY assets/conf/myconf.conf /usr/src/myconf.conf
 EXPOSE 80
 EXPOSE 443
 EXPOSE 2222
-
-USER 1001
 
 # Run nginx
 CMD ["nginx", "-g", "daemon off;"]
