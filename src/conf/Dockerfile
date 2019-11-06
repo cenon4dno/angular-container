@@ -2,15 +2,15 @@
 FROM nginx
 
 # Configure system variables
-WORKDIR /usr/src/app
+WORKDIR /home/app
 
 # Copy package.json for initial package installation
-COPY . /usr/src/app/
+COPY . /home/app/
 
 # Replace default nginx config
 COPY nginx.conf /etc/nginx/nginx.conf
 # Copy app nginx conf
-COPY myconf.conf /usr/src/myconf.conf
+COPY myconf.conf /home/app/myconf.conf
 
 # Replace this with your application's default port
 EXPOSE 80
