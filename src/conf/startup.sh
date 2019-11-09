@@ -1,6 +1,6 @@
 
 #!/bin/sh
 
-service nginx start > /home/app/log.txt
+service nginx start > /home/site/wwwroot/log.txt
 
 /bin/bash
