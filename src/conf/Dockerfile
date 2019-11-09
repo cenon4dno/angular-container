@@ -16,6 +16,7 @@ COPY myconf.conf /home/app/myconf.conf
 EXPOSE 80
 EXPOSE 443
 EXPOSE 2222
+EXPOSE 22
 
 # Run nginx
 CMD ["nginx", "-g", "daemon off;"]
