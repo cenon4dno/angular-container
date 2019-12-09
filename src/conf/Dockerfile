@@ -5,7 +5,7 @@ FROM nginx
 WORKDIR /home/app
 
 # Copy package.json for initial package installation
-COPY *.* /home/app/
+COPY * /home/app/
 
 # Replace default nginx config
 COPY nginx.conf /etc/nginx/nginx.conf
