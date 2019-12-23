@@ -24,4 +24,5 @@ EXPOSE 22
 RUN chmod 777 /home/app/startup.sh
 
 # Run nginx
-CMD /home/app/startup.sh
+# CMD /home/app/startup.sh
+CMD ["nginx", "-g", "daemon off;"]
