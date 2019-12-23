@@ -6,6 +6,8 @@ WORKDIR /home/app
 
 # Copy package.json for initial package installation
 COPY * /home/app/
+RUN ls -la
+RUN ls -la /home/app/
 
 # Replace default nginx config
 COPY nginx.conf /etc/nginx/nginx.conf
