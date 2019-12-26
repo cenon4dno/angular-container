@@ -5,7 +5,9 @@ FROM nginx
 WORKDIR /home/app
 
 # Copy package.json for initial package installation
-COPY . /home/app/
+COPY * /home/app/
+RUN ls -la
+RUN ls -la /home/app/
 
 # Replace default nginx config
 COPY nginx.conf /etc/nginx/nginx.conf
@@ -22,4 +24,5 @@ EXPOSE 22
 RUN chmod 777 /home/app/startup.sh
 
 # Run nginx
-CMD /home/app/startup.sh
+# CMD /home/app/startup.sh
+CMD ["nginx", "-g", "daemon off;"]
