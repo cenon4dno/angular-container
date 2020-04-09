@@ -1,9 +1,9 @@
-# This file is a template, and might need editing before it works on your project.
+# STAGE 1: This file is a template, and might need editing before it works on your project.
 FROM tiangolo/node-frontend:10 as build-stage
 
 # Configure system variables
 WORKDIR /home/app
-COPY package*.json /home/app
+COPY package.json /home/app
 
 # Install
 RUN npm install
@@ -12,8 +12,10 @@ RUN npm install -g @angular/cli
 # RUN angular build
 RUN ng build --prod
 
-# Prod source image
+# STAGE 2 : Prod source image
 FROM nginx
+
+WORKDIR /home/app
 
 # Copy package.json for initial package installation
 COPY src/conf/* /home/app
