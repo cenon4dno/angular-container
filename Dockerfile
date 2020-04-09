@@ -3,6 +3,7 @@ FROM tiangolo/node-frontend:10 as build-stage
 
 # Configure system variables
 WORKDIR /home/app
+COPY package*.json /home/app
 
 # Install
 RUN npm install
@@ -15,7 +16,7 @@ RUN ng build --prod
 FROM nginx
 
 # Copy package.json for initial package installation
-COPY src/conf/* /home/app/
+COPY src/conf/* /home/app
 COPY dist/PracticeOps/* /home/app
 
 # Replace default nginx config
