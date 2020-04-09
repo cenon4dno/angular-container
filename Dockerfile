@@ -1,9 +1,9 @@
 # STAGE 1: This file is a template, and might need editing before it works on your project.
-FROM tiangolo/node-frontend:10 as build-stage
+FROM node as stage1
 
 # Configure system variables
 WORKDIR /home/app
-COPY package.json /home/app
+COPY ./package.json /home/app
 
 # Install
 RUN npm install
@@ -12,19 +12,22 @@ RUN npm install -g @angular/cli
 # RUN angular build
 RUN ng build --prod
 
+COPY ./dist /home/app/dist
+
+ARG configuration=production
 # STAGE 2 : Prod source image
 FROM nginx
 
 WORKDIR /home/app
 
 # Copy package.json for initial package installation
-COPY src/conf/* /home/app
-COPY dist/PracticeOps/* /home/app
+COPY --from=stage1 src/conf/* /home/app
+COPY --from=stage1 dist/PracticeOps/* /home/app
 
 # Replace default nginx config
-COPY nginx.conf /etc/nginx/nginx.conf
+COPY --from=stage1 nginx.conf /etc/nginx/nginx.conf
 # Copy app nginx conf
-COPY myconf.conf /home/app/myconf.conf
+COPY --from=stage1 myconf.conf /home/app/myconf.conf
 
 # Replace this with your application's default port
 EXPOSE 80
