@@ -4,15 +4,14 @@ FROM nginx
 # Configure system variables
 WORKDIR /home/app
 
-# Copy package.json for initial package installation
-COPY * /home/app/
-RUN ls -la
+# Copy DIST directory
+COPY dist/PracticeOps/* /home/app
 RUN ls -la /home/app/
 
 # Replace default nginx config
-COPY nginx.conf /etc/nginx/nginx.conf
+COPY src/conf/nginx.conf /etc/nginx/nginx.conf
 # Copy app nginx conf
-COPY myconf.conf /home/app/myconf.conf
+COPY src/conf/myconf.conf /home/app/myconf.conf
 
 # Replace this with your application's default port
 EXPOSE 80
