@@ -23,7 +23,7 @@
               "src/favicon.ico",
               {
                 "glob": "**/*",
-                "input": "src/conf/",
+                "input": "",
                 "output": "/"
               }
             ],
