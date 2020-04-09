@@ -5,7 +5,7 @@ FROM nginx
 WORKDIR /home/app
 
 # Copy DIST directory
-COPY dist/PracticeOps/* /home/app
+COPY dist/PracticeOps/* /home/app/
 RUN ls -la /home/app/
 
 # Replace default nginx config
