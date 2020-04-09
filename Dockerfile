@@ -3,9 +3,10 @@ FROM node as stage1
 
 # Configure system variables
 WORKDIR /home/app
+
+COPY * /home/app/
 RUN ls -la
 RUN ls -la /home/app/
-COPY ./package.json /home/app
 
 # Install
 RUN npm install
